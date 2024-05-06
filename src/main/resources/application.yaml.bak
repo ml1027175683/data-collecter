@@ -1,0 +1,38 @@
+server:
+  port: ${SERVER_PORT:8093}
+
+spring:
+  datasource:
+    url: jdbc:mysql://${DB_SERVER:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:collect-manage}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=${DB_TIMEZONE:Asia/Shanghai}
+    username: ${DB_USER:root}
+    password: ${DB_PWD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: user_hikari
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 10
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  data:
+    mongodb:
+      host: ${MONGODB_HOST:127.0.0.1}
+      port: ${MONGODB_PORT:27017}
+      username: ${MONGODB_USERNAME:admin}
+      password: ${MONGODB_PWD:123456}
+      database: Repo_history
+      authentication-database: admin
+  redis:
+    host: ${REDIS_SERVER:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PWD:123456}
+    database: ${REDIS_DATABASE:2}
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 10000
+      shutdown-timeout: 100
