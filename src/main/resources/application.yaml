@@ -1,0 +1,36 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: tcp-collect
+  task:
+    scheduling:
+      pool:
+        size: 50
+  data:
+    redis:
+      host: ${DB_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      timeout: 10000
+      password: ${REDIS_PASSWORD:9h@123}
+      lettuce:
+        pool:
+          max-active: 100
+          max-wait: 3000
+          max-idle: 50
+          min-idle: 10
+      database: 2
+
+
+tcp:
+  ports:
+    - 9090
+    - 9091
+    - 9092
+    - 9093
+    - 9094
+    - 9095
+    - 9096
+    - 9097
+    - 9098
+    - 9099
